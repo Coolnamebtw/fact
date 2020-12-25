@@ -9,7 +9,7 @@ The main goal of this project is to improve my skill with bash scripting.
 I hope however that it will prove useful to more people in the long run, configuring the basics of Arch gets boring after awhile..  
   
 ### Pull requests
-Even though I might not accept them all I greatly appreciate any pull requests you make.
+Even though I might not accept them all I greatly appreciate any pull requests you make.  
 Please follow these steps if you want to contribute:  
   
 1. Fork this repo

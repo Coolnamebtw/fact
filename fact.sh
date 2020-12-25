@@ -85,7 +85,7 @@ if [[ "${BuildMirrorlist}" == true ]]; then
                 $SUDO reflector --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
                 echo "::: removing reflector"
                 $SUDO pacman --noconfirm -R reflector
-            elif [[ "${var_mirrortool}" == "g"]]; then
+            elif [[ "${var_mirrortool}" == "g" ]]; then
                 echo "::: building new mirrorlist using pacman mirrorlist generator"
                 echo "::: please enter the closest countrycode from the following list:"
                 echo -n "::: "

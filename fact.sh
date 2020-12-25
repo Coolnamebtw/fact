@@ -95,7 +95,8 @@ if [[ "${BuildMirrorlist}" == true ]]; then
                     read -p "Choose a mirror: " var_chosenmirror
                     read -p "IPv(4) or IPv(6): " var_ipversion
                     $SUDO curl \"https://archlinux.org/mirrorlist/?country=${var_chosenmirror}&protocol=http&protocol=https&ip_version=${var_ipversion}\" -o /etc/pacman.d/mirrorlist
-                fi
+                done
+            fi
             echo "::: updating pacman database"
             $SUDO pacman -Syy
             echo "::: finished generating mirrorlist"

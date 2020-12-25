@@ -32,7 +32,7 @@ echo "::: 1) An active internet connection"
 echo "::: 2) Some software that will be installed while this script runs."
 echo ""
 echo "::: To prevent extra issues in Github please type \"IM READY\" and hit enter"
-while read -p "Your answer: " var_userawake do
+while read -p "Your answer: " var_userawake; do
     if [[ "${var_userawake}" != "IM READY" ]]; then
         echo "Want to try again?"
     else

@@ -78,22 +78,21 @@ main {
             if [[ -z "${var_mirrortool}" ]]; then
                 echo "::: please make a choice!"
             else
+                echo -n "::: "
+                for mirror in "${MirrorCountryCodes[@]}"; do
+                    echo -n "${mirror}, "
+                    echo ""
+                    echo "::: please enter the closest countrycode from the following list:"
+                    read -p "Choose a mirror: " var_chosenmirror
+                    read -p "IPv(4) or IPv(6): " var_ipversion
                 if [[ "${var_mirrortool}" == "r" ]]; then
                     echo "::: installing reflector"
                     $SUDO pacman --noconfirm -S reflector
-                    echo "::: building mirrorlist (this might take a while)"
-                    $SUDO reflector --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+                    echo "::: building mirrorlist (this might take a while, ignore any warnings)"
+                    $SUDO reflector -c "${var_chosenmirror}" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
                     echo "::: removing reflector"
                     $SUDO pacman --noconfirm -R reflector
                 elif [[ "${var_mirrortool}" == "g" ]]; then
-                    echo "::: building new mirrorlist using pacman mirrorlist generator"
-                    echo "::: please enter the closest countrycode from the following list:"
-                    echo -n "::: "
-                    for mirror in "${MirrorCountryCodes[@]}"; do
-                        echo -n "${mirror}, "
-                        echo ""
-                        read -p "Choose a mirror: " var_chosenmirror
-                        read -p "IPv(4) or IPv(6): " var_ipversion
                         $SUDO curl \"https://archlinux.org/mirrorlist/?country=${var_chosenmirror}&protocol=http&protocol=https&ip_version=${var_ipversion}\" -o /etc/pacman.d/mirrorlist
                     done
                 fi

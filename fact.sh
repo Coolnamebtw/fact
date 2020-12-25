@@ -25,7 +25,7 @@ HardenSystem=true
 
 
 ######## SCRIPT STARTS HERE ########
-main(){
+main {
     clear
     echo "::: this script relies on two things"
     echo "::: 1) An active internet connection"

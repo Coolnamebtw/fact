@@ -120,7 +120,7 @@ if [[ "${CreateUserAccount}" == true ]]; then
         fi
     done
     echo "::: checking if sudo is installed"
-    if [["${SUDO}" != "" ]]
+    if [["${SUDO}" != "" ]]; then
         echo "::: sudo is installed"
         echo "::: adding ${var_username} to wheel group (you should allow this group sudo access due to Polkit)"
         $SUDO usermod -aG wheel ${var_username}

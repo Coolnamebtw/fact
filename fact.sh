@@ -96,10 +96,34 @@ main(){
                     fi
                     echo "::: updating pacman database"
                     $SUDO pacman -Syy
+                    echo "::: finished generating mirrorlist"
                     break # Leave the loop (should work right?)
                 fi 
             done        
         else
             echo "::: not building a new mirrorlist"
         fi
+
+        # Creating a user account
+        if [[ "${CreateUserAccount}" == true]]; then
+            echo "::: creating a new user"
+            while read -p "Username: " var_username do
+                if [[ -z "${var_username}"]]; then
+                    echo "::: provide a username!"
+                else 
+                    useradd -m ${var_username}
+                    passwd ${var_username}
+                    break
+                fi
+            done
+            echo "::: checking if sudo is installed"
+            if [["${SUDO}" != ""]]
+                echo "::: sudo is installed"
+                echo "::: adding ${var_username} to wheel group (you should allow this group sudo access due to Polkit)"
+                usermod -aG wheel ${var_username}
+            else
+                echo "::: sudo is not installed, moving on"
+            fi
+            echo "::: finished creating user"
+
 }

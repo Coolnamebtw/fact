@@ -93,8 +93,7 @@ main {
                     echo "::: removing reflector"
                     $SUDO pacman --noconfirm -R reflector
                 elif [[ "${var_mirrortool}" == "g" ]]; then
-                        $SUDO curl \"https://archlinux.org/mirrorlist/?country=${var_chosenmirror}&protocol=http&protocol=https&ip_version=${var_ipversion}\" -o /etc/pacman.d/mirrorlist
-                    done
+                    $SUDO curl \"https://archlinux.org/mirrorlist/?country=${var_chosenmirror}&protocol=http&protocol=https&ip_version=${var_ipversion}\" -o /etc/pacman.d/mirrorlist
                 fi
                 echo "::: updating pacman database"
                 $SUDO pacman -Syy

@@ -81,21 +81,21 @@ main {
                 echo -n "::: "
                 for mirror in "${MirrorCountryCodes[@]}"; do
                     echo -n "${mirror}, "
-                    echo ""
-                    echo "::: please enter the closest countrycode from the following list:"
-                    read -p "Choose a mirror: " var_chosenmirror
-                    read -p "IPv(4) or IPv(6): " var_ipversion
-                    if [[ "${var_mirrortool}" == "r" ]]; then
-                        echo "::: installing reflector"
-                        $SUDO pacman --noconfirm -S reflector
-                        echo "::: building mirrorlist (this might take a while, ignore any warnings)"
-                        $SUDO reflector -c "${var_chosenmirror}" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-                        echo "::: removing reflector"
-                        $SUDO pacman --noconfirm -R reflector
-                    elif [[ "${var_mirrortool}" == "g" ]]; then
-                        $SUDO curl \"https://archlinux.org/mirrorlist/?country=${var_chosenmirror}&protocol=http&protocol=https&ip_version=${var_ipversion}\" -o /etc/pacman.d/mirrorlist
-                    fi
                 done
+                echo ""
+                echo "::: please enter the closest countrycode from the following list:"
+                read -p "Choose a mirror: " var_chosenmirror
+                read -p "IPv(4) or IPv(6): " var_ipversion
+                if [[ "${var_mirrortool}" == "r" ]]; then
+                    echo "::: installing reflector"
+                    $SUDO pacman --noconfirm -S reflector
+                    echo "::: building mirrorlist (this might take a while, ignore any warnings)"
+                    $SUDO reflector -c "${var_chosenmirror}" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+                    echo "::: removing reflector"
+                    $SUDO pacman --noconfirm -R reflector
+                elif [[ "${var_mirrortool}" == "g" ]]; then
+                    $SUDO curl \"https://archlinux.org/mirrorlist/?country=${var_chosenmirror}&protocol=http&protocol=https&ip_version=${var_ipversion}\" -o /etc/pacman.d/mirrorlist
+                fi
                 echo "::: updating pacman database"
                 $SUDO pacman -Syy
                 echo "::: finished generating mirrorlist"

@@ -59,7 +59,7 @@ fi
 # Change the hostname
 if [[ "${ChangeHostname}" == true ]]; then
     echo "::: what should we set the hostname of this device to?"
-    while read -p 'Hostname: ' var_hostname do
+    while read -p 'Hostname: ' var_hostname; do
         if [[ -z "${var_hostname}" ]]; then
             echo "::: you must provide a hostname!"
         else
@@ -74,7 +74,7 @@ fi
 if [[ "${BuildMirrorlist}" == true ]]; then
     echo "::: generating a better mirrorlist"
     echo "::: this script can use reflector or the pacman mirrorlist generator, please choose"
-    while read -p "(r)eflector or (g)enerator: " var_mirrortool do
+    while read -p "(r)eflector or (g)enerator: " var_mirrortool; do
         if [[ -z "${var_mirrortool}" ]]; then
             echo "::: please make a choice!"
         else
@@ -109,7 +109,7 @@ fi
 # Creating a user account
 if [[ "${CreateUserAccount}" == true ]]; then
     echo "::: creating a new user"
-    while read -p "Username: " var_username do
+    while read -p "Username: " var_username; do
         if [[ -z "${var_username}" ]]; then
             echo "::: provide a username!"
         else 

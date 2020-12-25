@@ -13,7 +13,10 @@ Even though I might not accept them all I greatly appreciate any pull requests y
 Please follow these steps if you want to contribute:  
   
 1. Fork this repo
-2. Create your feature branch (`git checkout -b feature/SomethingAmazing`)
-3. Commit your changes (`git commit -m 'Add this amazing thing I made'`)
-4. Push to the branch (`git push origin feature/SomethingAmazing`)
+2. Create your feature branch  
+`git checkout -b feature/SomethingAmazing`  
+3. Commit your changes  
+`git commit -m 'Add this amazing thing I made'`  
+4. Push to the branch  
+`git push origin feature/SomethingAmazing`  
 5. Open a Pull Request
